@@ -81,7 +81,7 @@
 				<td class="text-center"><?php echo $faculty->doctoral->yr_grad ?></td>
 				<td class="text-center"><?php echo $faculty->doctoral->name_of_school ?></td>
 				<td class="text-center"><a class="btn btn-success"href="/faculty/edit.php?id=<?php echo $faculty->id ?>">EDIT</a></td>
-				<td class="text-center"><a class="btn btn-danger"href="/faculty/action/delete.php?id=<?php echo $faculty->id ?>">DELETE</a></td>
+				<td class="text-center"><a class="btn btn-danger text-white" onclick="deleteProfile(<?php echo $faculty->id ?>)" >DELETE</a></td>
 			</tr>
 		<?php endforeach ?>
 
@@ -89,3 +89,22 @@
 </tbody>
 </table>
 </div>
+<script src="/faculty/assets/scripts/jquery.min.js"></script>
+<script>
+	function deleteProfile(id) {
+		let confirmation = confirm('Are you sure to delete this record?');
+		if (confirmation) {
+			$.ajax({
+				 url : '/faculty/action/delete.php?id=' + id,
+				 success : function (response) {
+				 	response = JSON.parse(response)
+				 	if (response.success) {
+				 		location.reload();
+				 	}
+				 }
+			});	
+		}
+	}
+</script>	
+</body>
+</html>

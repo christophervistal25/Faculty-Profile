@@ -8,5 +8,4 @@ $faculty->doctoral->delete();
 $faculty->delete();
 
 
-
-header("Location:/faculty/list.php");
+echo json_encode(['success' => true]);

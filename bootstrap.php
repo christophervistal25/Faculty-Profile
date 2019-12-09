@@ -3,11 +3,8 @@ require "vendor/autoload.php";
 
 use Illuminate\Database\Capsule\Manager as Capsule;
 
-$ASSET_URL =  str_replace('\\', '/', dirname(__FILE__)) . '/assets';
 
 $capsule = new Capsule;
-
-
 
 
 $capsule->addConnection([
